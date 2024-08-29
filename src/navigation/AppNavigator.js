@@ -15,10 +15,27 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        screenOptions={({ route }) => ({
+        screenOptions={({ route ,navigation}) => ({
+          headerLeft: () => (
+            <Ionicons
+              name="menu"
+              size={24}
+              color="#8B97A8"
+              style={{ marginLeft: 15 }}
+              onPress={() => null}
+            />
+          ),
+          headerRight: () => (
+            <Ionicons
+              name="settings-outline"
+              size={24}
+              color="#8B97A8"
+              style={{ marginRight: 15 }}
+              onPress={() => null}
+            />
+          ),
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
-
             if (route.name === 'Home') {
               iconName = focused
                 ? 'home'
@@ -30,9 +47,16 @@ export default function App() {
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
+          tabBarStyle:{
+            elevation: 0,
+            shadowOpacity: 0,
+            backgroundColor:'#FFFF'
+          },
+          backgroundColor:'#FFFF',
           tabBarActiveTintColor: '#3D3270',
           tabBarInactiveTintColor: '#8B97A8',
           tabBarShowLabel: false,
+          headerTitleAlign:'center',
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
